@@ -1,0 +1,70 @@
+{
+  "name": "seneca-effe",
+  "version": "0.0.0",
+  "description": "An email notification service with support for Foundation for Emails",
+  "homepage": "https://github.com/snics/seneca-effe",
+  "repository": "git@git.devninjas.io:nico/swiatecki.io.git",
+  "scripts": {
+    "prerestart": "npm install",
+    "precommit": "lint-staged",
+    "postcommit": "git update-index --again",
+    "test": "npm run test:lint && npm run test:leb",
+    "test:lint": "eslint .",
+    "test:lint:fix": "eslint . --fix",
+    "test:leb": "lab -P test -r console -m 3000 -t 70",
+    "coveralls": "lab -s -P test -r lcov | coveralls",
+    "coverage": "lab -P test -L -t 70 -r html > coverage.html"
+  },
+  "author": {
+    "name": "Nico Swiatecki",
+    "url": "https://swiatecki.io"
+  },
+  "files": [
+    "README.md",
+    "LICENSE",
+    "lib",
+    "effe.js"
+  ],
+  "main": "effe.js",
+  "keywords": [
+    "seneca",
+    "mail",
+    "email",
+    "plugin"
+  ],
+  "engines": {
+    "npm": ">= 6.0.0"
+  },
+  "dependencies": {
+    "bluebird": "^3.5.1",
+    "email-templates": "^4.0.1",
+    "email-templates-effe": "^1.1.0",
+    "lodash": "^4.17.10",
+    "nodemailer": "^4.6.5"
+  },
+  "devDependencies": {
+    "code": "^5.2.0",
+    "coveralls": "^3.0.0",
+    "eslint": "^4.19.1",
+    "eslint-plugin-node": "^6.0.1",
+    "eslint-config-prettier": "^2.9.0",
+    "eslint-config-xo": "^0.20.1",
+    "eslint-plugin-prettier": "^2.6.0",
+    "husky": "^0.14.3",
+    "lab": "^15.4.5",
+    "lint-staged": "^6.1.1",
+    "prettier": "^1.11.1",
+    "seneca": "^3.6.0"
+  },
+  "lint-staged": {
+    "*.js": [
+      "npm run test:lint:fix",
+      "git add"
+    ],
+    "*.json": [
+      "prettier --write",
+      "git add"
+    ]
+  },
+  "license": "MIT"
+}
